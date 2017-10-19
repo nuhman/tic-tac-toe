@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title> Tic-Tac-Toe !</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <section class="container" id="app">
+    <template v-if="startScreen">
+      <div class="startScreen">
+        <p class="mainHeading">
+          Tic-Tac-Toe
+        </p>
+        <p>
+          <button class="btn btn-start" @click="startGame('human')">Vs Human</button>
+          <button class="btn btn-start" @click="startGame('computer')">Vs Computer</button>
+        </p>
+      </div>
+    </template>
+    <div v-else>
+    <div class="row">
+			<div class="col-3 col-m-3 menu">
+				<h1 class="status" style="text-align:left; margin-left:20px;">Controls</h1>
+        <button class="btn" @click="reset">Reset</button>
+        <button class="btn" @click="toggleSound">Turn {{ oppSoundStatus }} Sounds</button>
+				<button class="btn" @click="togglePlay">Play with {{ oppPlayer }}</button>
+      </div>
+      <div class="col-9 col-m-9">
+        <h1 class="status">{{ preTextForStatus }}'{{currentPlayer}}'</h1>
+    		<table>
+    			<tbody>
+    				<tr>
+    					<td @click="setSymbol(0,0,$event)" id="00"></td>
+    					<td class="verticalBorder" @click="setSymbol(0,1,$event)" id="01"></td>
+    					<td @click="setSymbol(0,2,$event)" id="02"></td>
+    				</tr>
+    				<tr>
+    					<td class="horizontalBorder" @click="setSymbol(1,0,$event)" id="10"></td>
+    					<td class="verticalBorder horizontalBorder" @click="setSymbol(1,1,$event)" id="11"></td>
+    					<td class="horizontalBorder" @click="setSymbol(1,2,$event)" id="12"></td>
+    				</tr>
+    				<tr>
+    					<td @click="setSymbol(2,0,$event)" id="20"></td>
+    					<td class="verticalBorder" @click="setSymbol(2,1,$event)" id="21"></td>
+    					<td @click="setSymbol(2,2,$event)" id="22"></td>
+    				</tr>
+    			</tbody>
+    		</table>
+      </div>
+
+
+      <div class="col-12 col-m-12">
+        <p class="status">
+          {{ gameStatus }}
+        </p>
+      </div>
+    </div>
+    </div>
+  </section>
+<script src="../vue.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
